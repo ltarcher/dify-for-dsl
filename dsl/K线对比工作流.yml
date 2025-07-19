@@ -26,13 +26,6 @@ workflow:
       - local_file
       - remote_url
       enabled: false
-      fileUploadConfig:
-        audio_file_size_limit: 50
-        batch_count_limit: 5
-        file_size_limit: 1500
-        image_file_size_limit: 10
-        video_file_size_limit: 100
-        workflow_file_upload_limit: 10
       image:
         enabled: false
         number_limits: 3
@@ -121,19 +114,31 @@ workflow:
         type: start
         variables:
         - hide: false
-          label: 指数1
+          label: 指数1*
           max_length: 48
           options: []
           required: true
           type: text-input
           variable: szzs
-        - label: 指数2
+        - label: 指数2*
           max_length: 48
           options: []
           required: true
           type: text-input
           variable: myzs
-      height: 115
+        - label: 开始时间*
+          max_length: 48
+          options: []
+          required: true
+          type: text-input
+          variable: start_date
+        - label: 结束时间
+          max_length: 48
+          options: []
+          required: false
+          type: text-input
+          variable: end_date
+      height: 168
       id: '1752881962138'
       position:
         x: -60.557583204789466
@@ -141,7 +146,7 @@ workflow:
       positionAbsolute:
         x: -60.557583204789466
         y: 250.57993783506822
-      selected: true
+      selected: false
       sourcePosition: right
       targetPosition: left
       type: custom
@@ -157,7 +162,7 @@ workflow:
         selected: false
         title: 结束
         type: end
-      height: 89
+      height: 90
       id: '1752882240753'
       position:
         x: 1236.9332487714169
@@ -324,19 +329,19 @@ workflow:
             value: '{{#1752881962138.szzs#}}'
           end_date:
             type: mixed
-            value: null
+            value: '{{#1752881962138.end_date#}}'
           fqt:
             type: constant
-            value: null
+            value: 1
           freq:
             type: mixed
             value: d
           start_date:
             type: mixed
-            value: '2025-01-01'
+            value: '{{#1752881962138.start_date#}}'
         type: tool
         version: '2'
-      height: 85
+      height: 86
       id: '1752896440180'
       position:
         x: 365.4202046707293
@@ -469,7 +474,7 @@ workflow:
           - myzs
           value_type: string
           variable: myzs_name
-      height: 53
+      height: 54
       id: '1752901655419'
       position:
         x: 826.7918793053232
@@ -636,7 +641,7 @@ workflow:
             value: '{{#1752881962138.myzs#}}'
           end_date:
             type: mixed
-            value: null
+            value: '{{#1752881962138.end_date#}}'
           fqt:
             type: constant
             value: 1
@@ -645,10 +650,10 @@ workflow:
             value: d
           start_date:
             type: mixed
-            value: '2025-01-01'
+            value: '{{#1752881962138.start_date#}}'
         type: tool
         version: '2'
-      height: 85
+      height: 86
       id: '1752912326806'
       position:
         x: 365.4202046707293
@@ -656,12 +661,12 @@ workflow:
       positionAbsolute:
         x: 365.4202046707293
         y: 354.90336744512155
-      selected: false
+      selected: true
       sourcePosition: right
       targetPosition: left
       type: custom
       width: 244
     viewport:
-      x: 116.97989480021067
-      y: 117.18271861864787
+      x: -531.0201051997892
+      y: 176.18271861864798
       zoom: 0.8705505632961243
