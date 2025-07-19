@@ -1,0 +1,667 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: workflow
+  name: K线对比工作流
+  use_icon_as_answer_icon: false
+dependencies: []
+kind: app
+version: 0.3.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 1500
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: tool
+        targetType: code
+      id: 1752896440180-source-1752901655419-target
+      source: '1752896440180'
+      sourceHandle: source
+      target: '1752901655419'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: end
+      id: 1752901655419-source-1752882240753-target
+      source: '1752901655419'
+      sourceHandle: source
+      target: '1752882240753'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: start
+        targetType: tool
+      id: 1752881962138-source-1752896440180-target
+      source: '1752881962138'
+      sourceHandle: source
+      target: '1752896440180'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: tool
+      id: 1752881962138--1752912326806-target
+      source: '1752881962138'
+      sourceHandle: source
+      target: '1752912326806'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: tool
+        targetType: code
+      id: 1752912326806-source-1752901655419-target
+      source: '1752912326806'
+      sourceHandle: source
+      target: '1752901655419'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - hide: false
+          label: 指数1
+          max_length: 48
+          options: []
+          required: true
+          type: text-input
+          variable: szzs
+        - label: 指数2
+          max_length: 48
+          options: []
+          required: true
+          type: text-input
+          variable: myzs
+      height: 115
+      id: '1752881962138'
+      position:
+        x: -60.557583204789466
+        y: 250.57993783506822
+      positionAbsolute:
+        x: -60.557583204789466
+        y: 250.57993783506822
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1752901655419'
+          - result
+          value_type: string
+          variable: text
+        selected: false
+        title: 结束
+        type: end
+      height: 89
+      id: '1752882240753'
+      position:
+        x: 1236.9332487714169
+        y: 235.6468592201067
+      positionAbsolute:
+        x: 1236.9332487714169
+        y: 235.6468592201067
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        is_team_authorization: true
+        output_schema: null
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: ''
+            ja_JP: ''
+            pt_BR: ''
+            zh_Hans: ''
+          label:
+            en_US: code
+            ja_JP: code
+            pt_BR: code
+            zh_Hans: code
+          llm_description: ''
+          max: null
+          min: null
+          name: code
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: ''
+            ja_JP: ''
+            pt_BR: ''
+            zh_Hans: ''
+          label:
+            en_US: freq
+            ja_JP: freq
+            pt_BR: freq
+            zh_Hans: freq
+          llm_description: ''
+          max: null
+          min: null
+          name: freq
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: ''
+            ja_JP: ''
+            pt_BR: ''
+            zh_Hans: ''
+          label:
+            en_US: fqt
+            ja_JP: fqt
+            pt_BR: fqt
+            zh_Hans: fqt
+          llm_description: ''
+          max: null
+          min: null
+          name: fqt
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: number
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: ''
+            ja_JP: ''
+            pt_BR: ''
+            zh_Hans: ''
+          label:
+            en_US: start_date
+            ja_JP: start_date
+            pt_BR: start_date
+            zh_Hans: start_date
+          llm_description: ''
+          max: null
+          min: null
+          name: start_date
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: ''
+            ja_JP: ''
+            pt_BR: ''
+            zh_Hans: ''
+          label:
+            en_US: end_date
+            ja_JP: end_date
+            pt_BR: end_date
+            zh_Hans: end_date
+          llm_description: ''
+          max: null
+          min: null
+          name: end_date
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        params:
+          code: ''
+          end_date: ''
+          fqt: ''
+          freq: ''
+          start_date: ''
+        provider_id: mcp_stock
+        provider_name: mcp-stock
+        provider_type: mcp
+        selected: false
+        title: get_szzs
+        tool_configurations: {}
+        tool_description: " 获取指定股票代码的历史数据\n    参数：\n    - code: 股票代码或名称，可以是字符串也可以是列表，如\"\
+          000001\"、\"600000\"等\n    - freq: 数据频率，时间频率，默认是日(d)，\n      - 1 : 分钟；\n\
+          \      - 5 : 5 分钟；\n      - 15 : 15 分钟；\n      - 30 : 30 分钟；\n      - 60\
+          \ : 60 分钟；\n      - 101或'D'或'd'：日；\n      - 102或‘w’或'W'：周; \n      - 103或'm'或'M':\
+          \ 月\n    - start_date: 开始日期，格式为\"YYYY-MM-DD\"，如\"2023-01-01\"，默认为'19000101'（取尽可能早的数据）\n\
+          \    - end_date: 结束日期，格式为\"YYYY-MM-DD\"，如\"2023-12-31\"，默认为None（取到最新数据）\n\
+          \    - fqt: 前复权方式，默认为1（前复权），0为不复权，2为后复权\n    返回：\n    - List[Dict]: 包含股票历史数据，\n\
+          \    Dict包含字段: ['日期', '开盘', '收盘', '最高', '最低', '成交量', '成交额', '振幅', '涨跌幅',\
+          \ '涨跌额', '换手率']\n    "
+        tool_label: get_stock_history_data
+        tool_name: get_stock_history_data
+        tool_parameters:
+          code:
+            type: mixed
+            value: '{{#1752881962138.szzs#}}'
+          end_date:
+            type: mixed
+            value: null
+          fqt:
+            type: constant
+            value: null
+          freq:
+            type: mixed
+            value: d
+          start_date:
+            type: mixed
+            value: '2025-01-01'
+        type: tool
+        version: '2'
+      height: 85
+      id: '1752896440180'
+      position:
+        x: 365.4202046707293
+        y: 146.04838753033803
+      positionAbsolute:
+        x: 365.4202046707293
+        y: 146.04838753033803
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "'''\nAuthor: ltarcher 59073821@qq.com\nDate: 2025-07-19 16:11:54\n\
+          LastEditors: ltarcher 59073821@qq.com\nLastEditTime: 2025-07-19 16:26:41\n\
+          FilePath: \\dify\\stock_echart.py\nDescription: 这是默认设置,请设置`customMade`,\
+          \ 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE\n\
+          '''\nimport json\nimport os\nimport re\n\ndef main(szzs: list[dict], myzs:\
+          \ list[dict], szzs_name=\"上证指数\", myzs_name=\"美元指数\") -> dict:\n    try:\n\
+          \        # 合并上证指数和美元指数在一个图上\n        sz_data = szzs  # 上证指数数据\n        my_data\
+          \ = myzs  # 美元指数数据\n        \n        # 提取共同的日期范围 - 处理YYYY-mm-DDT HH:MM:SS格式，只保留YYYY-mm-DD部分\n\
+          \        sz_dates = {item['date'].split('T')[0]: i for i, item in enumerate(sz_data)}\n\
+          \        my_dates = {item['date'].split('T')[0]: i for i, item in enumerate(my_data)}\n\
+          \        \n        # 找出两个数据集共有的日期\n        common_dates = sorted(set(sz_dates.keys())\
+          \ & set(my_dates.keys()))\n        \n        if not common_dates:\n    \
+          \        return {\"result\": f\"Error: 没有找到{szzs_name}和{myzs_name}的共同日期数据\"\
+          }\n        \n        # 准备上证指数数据\n        sz_indices = [sz_dates[date] for\
+          \ date in common_dates]\n        sz_open = [sz_data[i]['open'] for i in\
+          \ sz_indices]\n        sz_close = [sz_data[i]['close'] for i in sz_indices]\n\
+          \        sz_low = [sz_data[i]['low'] for i in sz_indices]\n        sz_high\
+          \ = [sz_data[i]['high'] for i in sz_indices]\n        sz_volumes = [sz_data[i]['volume']\
+          \ / 1e8 for i in sz_indices]  # 转换为亿单位\n        \n        # 准备美元指数数据\n \
+          \       my_indices = [my_dates[date] for date in common_dates]\n       \
+          \ my_open = [my_data[i]['open'] for i in my_indices]\n        my_close =\
+          \ [my_data[i]['close'] for i in my_indices]\n        my_low = [my_data[i]['low']\
+          \ for i in my_indices]\n        my_high = [my_data[i]['high'] for i in my_indices]\n\
+          \        \n        # 构建ECharts配置\n        echarts_config = {\n         \
+          \   \"title\": {\n                \"text\": f\"{szzs_name}与{myzs_name}对比\"\
+          \n            },\n            \"tooltip\": {\n                \"trigger\"\
+          : \"axis\",\n                \"axisPointer\": {\n                    \"\
+          type\": \"cross\"\n                }\n            },\n            \"legend\"\
+          : {\n                \"data\": [f\"{szzs_name}\", f\"{myzs_name}\", \"成交量\"\
+          ]\n            },\n            \"grid\": [\n                {\"left\": \"\
+          10%\", \"right\": \"8%\", \"height\": \"50%\"},\n                {\"left\"\
+          : \"10%\", \"right\": \"8%\", \"top\": \"65%\", \"height\": \"20%\"}\n \
+          \           ],\n            \"xAxis\": [\n                {\n          \
+          \          \"type\": \"category\",\n                    \"data\": common_dates,\n\
+          \                    \"scale\": True,\n                    \"boundaryGap\"\
+          : False,\n                    \"axisLine\": {\"onZero\": False},\n     \
+          \               \"splitLine\": {\"show\": False},\n                    \"\
+          min\": \"dataMin\",\n                    \"max\": \"dataMax\"\n        \
+          \        },\n                {\n                    \"type\": \"category\"\
+          ,\n                    \"gridIndex\": 1,\n                    \"data\":\
+          \ common_dates,\n                    \"boundaryGap\": False,\n         \
+          \           \"axisLine\": {\"onZero\": False},\n                    \"axisTick\"\
+          : {\"show\": False},\n                    \"splitLine\": {\"show\": False},\n\
+          \                    \"axisLabel\": {\"show\": False},\n               \
+          \     \"min\": \"dataMin\",\n                    \"max\": \"dataMax\"\n\
+          \                }\n            ],\n            \"yAxis\": [\n         \
+          \       {\n                    \"name\": f\"{szzs_name}\",\n           \
+          \         \"scale\": True,\n                    \"splitArea\": {\n     \
+          \                   \"show\": True\n                    }\n            \
+          \    },\n                {\n                    \"name\": f\"{myzs_name}\"\
+          ,\n                    \"scale\": True,\n                    \"splitArea\"\
+          : {\n                        \"show\": True\n                    },\n  \
+          \                  \"position\": \"right\"\n                },\n       \
+          \         {\n                    \"name\": \"成交量(亿)\",\n               \
+          \     \"gridIndex\": 1,\n                    \"splitNumber\": 2,\n     \
+          \               \"axisLine\": {\"show\": False},\n                    \"\
+          axisTick\": {\"show\": False},\n                    \"splitLine\": {\"show\"\
+          : False}\n                }\n            ],\n            \"dataZoom\": [\n\
+          \                {\n                    \"type\": \"inside\",\n        \
+          \            \"xAxisIndex\": [0, 1],\n                    \"start\": 0,\n\
+          \                    \"end\": 100\n                },\n                {\n\
+          \                    \"show\": True,\n                    \"xAxisIndex\"\
+          : [0, 1],\n                    \"type\": \"slider\",\n                 \
+          \   \"bottom\": \"5%\",\n                    \"start\": 0,\n           \
+          \         \"end\": 100\n                }\n            ],\n            \"\
+          series\": [\n                {\n                    \"name\": f\"{szzs_name}\"\
+          ,\n                    \"type\": \"candlestick\",\n                    \"\
+          data\": [[sz_open[i], sz_close[i], sz_low[i], sz_high[i]] for i in range(len(common_dates))],\n\
+          \                    \"itemStyle\": {\n                        \"color\"\
+          : \"#ec0000\",\n                        \"color0\": \"#00da3c\",\n     \
+          \                   \"borderColor\": \"#8A0000\",\n                    \
+          \    \"borderColor0\": \"#008F28\"\n                    }\n            \
+          \    },\n                {\n                    \"name\": f\"{myzs_name}\"\
+          ,\n                    \"type\": \"candlestick\",\n                    \"\
+          yAxisIndex\": 1,\n                    \"data\": [[my_open[i], my_close[i],\
+          \ my_low[i], my_high[i]] for i in range(len(common_dates))],\n         \
+          \           \"itemStyle\": {\n                        \"color\": \"#546dd1\"\
+          ,\n                        \"color0\": \"#87b9f5\",\n                  \
+          \      \"borderColor\": \"#3c4d8a\",\n                        \"borderColor0\"\
+          : \"#5a8cd9\"\n                    }\n                },\n             \
+          \   {\n                    \"name\": \"成交量\",\n                    \"type\"\
+          : \"bar\",\n                    \"xAxisIndex\": 1,\n                   \
+          \ \"yAxisIndex\": 2,\n                    \"data\": sz_volumes\n       \
+          \         }\n            ]\n        }\n        \n        # 生成输出文件\n    \
+          \    output = f\"```echarts\\n\" + json.dumps(echarts_config, indent=2,\
+          \ ensure_ascii=False) + \"\\n```\"\n        \n        # 返回结果\n        return\
+          \ {\n            \"result\": output\n        }\n    \n    except Exception\
+          \ as e:\n        return {\n            \"result\": f\"Error: {str(e)}\"\n\
+          \        }"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 代码执行
+        type: code
+        variables:
+        - value_selector:
+          - '1752896440180'
+          - json
+          value_type: array[object]
+          variable: szzs
+        - value_selector:
+          - '1752912326806'
+          - json
+          value_type: array[object]
+          variable: myzs
+        - value_selector:
+          - '1752881962138'
+          - szzs
+          value_type: string
+          variable: szzs_name
+        - value_selector:
+          - '1752881962138'
+          - myzs
+          value_type: string
+          variable: myzs_name
+      height: 53
+      id: '1752901655419'
+      position:
+        x: 826.7918793053232
+        y: 235.6468592201067
+      positionAbsolute:
+        x: 826.7918793053232
+        y: 235.6468592201067
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        is_team_authorization: true
+        output_schema: null
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: ''
+            ja_JP: ''
+            pt_BR: ''
+            zh_Hans: ''
+          label:
+            en_US: code
+            ja_JP: code
+            pt_BR: code
+            zh_Hans: code
+          llm_description: ''
+          max: null
+          min: null
+          name: code
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: ''
+            ja_JP: ''
+            pt_BR: ''
+            zh_Hans: ''
+          label:
+            en_US: freq
+            ja_JP: freq
+            pt_BR: freq
+            zh_Hans: freq
+          llm_description: ''
+          max: null
+          min: null
+          name: freq
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: ''
+            ja_JP: ''
+            pt_BR: ''
+            zh_Hans: ''
+          label:
+            en_US: fqt
+            ja_JP: fqt
+            pt_BR: fqt
+            zh_Hans: fqt
+          llm_description: ''
+          max: null
+          min: null
+          name: fqt
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: number
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: ''
+            ja_JP: ''
+            pt_BR: ''
+            zh_Hans: ''
+          label:
+            en_US: start_date
+            ja_JP: start_date
+            pt_BR: start_date
+            zh_Hans: start_date
+          llm_description: ''
+          max: null
+          min: null
+          name: start_date
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: ''
+            ja_JP: ''
+            pt_BR: ''
+            zh_Hans: ''
+          label:
+            en_US: end_date
+            ja_JP: end_date
+            pt_BR: end_date
+            zh_Hans: end_date
+          llm_description: ''
+          max: null
+          min: null
+          name: end_date
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        params:
+          code: ''
+          end_date: ''
+          fqt: ''
+          freq: ''
+          start_date: ''
+        provider_id: mcp_stock
+        provider_name: mcp-stock
+        provider_type: mcp
+        selected: false
+        title: get_myzs
+        tool_configurations: {}
+        tool_description: " 获取指定股票代码的历史数据\n    参数：\n    - code: 股票代码或名称，可以是字符串也可以是列表，如\"\
+          000001\"、\"600000\"等\n    - freq: 数据频率，时间频率，默认是日(d)，\n      - 1 : 分钟；\n\
+          \      - 5 : 5 分钟；\n      - 15 : 15 分钟；\n      - 30 : 30 分钟；\n      - 60\
+          \ : 60 分钟；\n      - 101或'D'或'd'：日；\n      - 102或‘w’或'W'：周; \n      - 103或'm'或'M':\
+          \ 月\n    - start_date: 开始日期，格式为\"YYYY-MM-DD\"，如\"2023-01-01\"，默认为'19000101'（取尽可能早的数据）\n\
+          \    - end_date: 结束日期，格式为\"YYYY-MM-DD\"，如\"2023-12-31\"，默认为None（取到最新数据）\n\
+          \    - fqt: 前复权方式，默认为1（前复权），0为不复权，2为后复权\n    返回：\n    - List[Dict]: 包含股票历史数据，\n\
+          \    Dict包含字段: ['日期', '开盘', '收盘', '最高', '最低', '成交量', '成交额', '振幅', '涨跌幅',\
+          \ '涨跌额', '换手率']\n    "
+        tool_label: get_stock_history_data
+        tool_name: get_stock_history_data
+        tool_parameters:
+          code:
+            type: mixed
+            value: '{{#1752881962138.myzs#}}'
+          end_date:
+            type: mixed
+            value: null
+          fqt:
+            type: constant
+            value: 1
+          freq:
+            type: mixed
+            value: d
+          start_date:
+            type: mixed
+            value: '2025-01-01'
+        type: tool
+        version: '2'
+      height: 85
+      id: '1752912326806'
+      position:
+        x: 365.4202046707293
+        y: 354.90336744512155
+      positionAbsolute:
+        x: 365.4202046707293
+        y: 354.90336744512155
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: 116.97989480021067
+      y: 117.18271861864787
+      zoom: 0.8705505632961243
